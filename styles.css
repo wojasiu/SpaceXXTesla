@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #000;
+  }
+  
+  header {
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    letter-spacing: 0.3em;
+  }
+  
+  .nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+  
+  main {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .greeting {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .name-input {
+    padding: 0.75rem;
+    font-size: 1.1rem;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+  
+  .cards {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    height: 500px;
+    
+  }
+  
+  .card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.05);
+    width:25%;
+    height: 100%;
+    
+
+  }
+  
+  .card img {
+    width: 100%;
+   height: 80%;
+    margin-top: 1rem;
+ 
+  }
+  
+  .card h3 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .card p {
+    color: #555;
+    font-size: 0.95rem;
+  }
+ 
