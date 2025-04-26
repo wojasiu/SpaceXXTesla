@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>X - Najciekawsze Posty</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="logo">X</div>
+      <div class="nav">
+        <button class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="dropdown" id="dropdown-menu">
+          <a href="#">Strona główna</a>
+          <a href="#">Zaloguj się</a>
+          <a href="#">Kup premium</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="info-box">
+        <h3>Czym jest X?</h3>
+        <p>
+          X to jedna z największych i najbardziej wpływowych platform
+          społecznościowych na świecie, skupiająca setki milionów użytkowników.
+          Wyróżnia się przede wszystkim podejściem do wolności słowa – w
+          przeciwieństwie do wielu innych portali, na X użytkownicy mają
+          znacznie większą swobodę w wyrażaniu swoich opinii, nawet tych
+          kontrowersyjnych czy niepopularnych. Platforma gromadzi niezwykle
+          zróżnicowane treści – od aktualności ze świata polityki, nauki i
+          technologii, przez kulturę, rozrywkę, aż po niszowe zainteresowania i
+          osobiste przemyślenia użytkowników. Dzięki temu X stało się miejscem
+          żywej, globalnej dyskusji, w której każdy może zabrać głos i znaleźć
+          przestrzeń dla siebie.
+        </p>
+      </section>
+
+      <h2>Najciekawsze posty ostatnich dni</h2>
+      <div class="cards">
+        <div class="card">
+          <blockquote class="twitter-tweet">
+            <a
+              href="https://twitter.com/JkmMikke/status/1915113574650847695"
+            ></a>
+          </blockquote>
+        </div>
+        <div class="card">
+          <blockquote class="twitter-tweet">
+            <a
+              href="https://twitter.com/Korona_Kielce/status/1913566197615829463"
+            ></a>
+          </blockquote>
+        </div>
+      </div>
+
+      <h2>Najnowsze zmiany platformy X</h2>
+      <div class="cards2">
+        <div class="card">
+          <blockquote class="twitter-tweet">
+            <a href="https://twitter.com/X/status/1913332507048661146"></a>
+          </blockquote>
+        </div>
+        <div class="card">
+          <blockquote class="twitter-tweet">
+            <a href="https://twitter.com/X/status/1913332507048661146"></a>
+          </blockquote>
+        </div>
+      </div>
+    </main>
+
+    <script
+      async
+      src="https://platform.twitter.com/widgets.js"
+      charset="utf-8"
+    ></script>
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("dropdown-menu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("show");
+      });
+
+      // Dodatkowo: kliknięcie poza menu zamyka je
+      window.addEventListener("click", (e) => {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>
