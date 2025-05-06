@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logowanie</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <section class="auth-box" id="auth-box">
+      <div class="tabs">
+        <button id="show-login" class="active">Logowanie</button>
+        <button id="show-register">Rejestracja</button>
+      </div>
+
+      <form id="login-form" class="auth-form">
+        <input type="text" id="login-username" placeholder="Nazwa użytkownika" required />
+        <input type="password" id="login-password" placeholder="Hasło" required />
+        <button type="submit">Zaloguj</button>
+      </form>
+
+      <form id="register-form" class="auth-form hidden">
+        <input type="text" id="register-username" placeholder="Nowa nazwa użytkownika" required />
+        <input type="password" id="register-password" placeholder="Nowe hasło" required />
+        <button type="submit">Zarejestruj się</button>
+      </form>
+
+      <p id="auth-message"></p>
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const showLoginBtn = document.getElementById("show-login");
+      const showRegisterBtn = document.getElementById("show-register");
+      const loginForm = document.getElementById("login-form");
+      const registerForm = document.getElementById("register-form");
+      const message = document.getElementById("auth-message");
+
+      showLoginBtn.addEventListener("click", () => {
+        loginForm.classList.remove("hidden");
+        registerForm.classList.add("hidden");
+        showLoginBtn.classList.add("active");
+        showRegisterBtn.classList.remove("active");
+        message.textContent = "";
+      });
+
+      showRegisterBtn.addEventListener("click", () => {
+        loginForm.classList.add("hidden");
+        registerForm.classList.remove("hidden");
+        showLoginBtn.classList.remove("active");
+        showRegisterBtn.classList.add("active");
+        message.textContent = "";
+      });
+
+      registerForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const user = document.getElementById("register-username").value;
+        const pass = document.getElementById("register-password").value;
+
+        if (localStorage.getItem(user)) {
+          message.textContent = "Użytkownik już istnieje!";
+          message.style.color = "#f85149";
+        } else {
+          localStorage.setItem(user, pass);
+          message.textContent = "Zarejestrowano pomyślnie!";
+          message.style.color = "#2ea043";
+          registerForm.reset();
+        }
+      });
+
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const user = document.getElementById("login-username").value;
+        const pass = document.getElementById("login-password").value;
+
+        const storedPass = localStorage.getItem(user);
+        if (storedPass && storedPass === pass) {
+          message.textContent = `Witaj, ${user}! Zalogowano pomyślnie.`;
+          message.style.color = "#2ea043";
+          loginForm.reset();
+        } else {
+          message.textContent = "Nieprawidłowy login lub hasło.";
+          message.style.color = "#f85149";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
