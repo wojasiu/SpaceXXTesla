@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kup Premium - X</title>
+    <link rel="stylesheet" href="styl_premium.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">X</div>
+      <div class="nav">
+        <button class="menu-toggle" id="menu-toggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="dropdown" id="dropdown-menu">
+          <a href="main.html">Strona główna</a>
+          <a href="login.html">Zaloguj się</a>
+          <a href="premium.html">Kup Premium</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="info-box">
+        <h3>Wybierz plan Premium</h3>
+        <p>
+          X oferuje różne plany Premium, które umożliwiają dostęp do dodatkowych
+          funkcji, takich jak ekskluzywne treści, brak reklam oraz możliwość
+          korzystania z zaawansowanych narzędzi. Wybierz plan, który najlepiej
+          odpowiada Twoim potrzebom.
+        </p>
+      </section>
+
+      <h2>Wybierz plan Premium</h2>
+      <div class="premium-plans">
+        <!-- Plan 1 -->
+        <div class="plan-card">
+          <h3>Premium Basic</h3>
+          <p class="price">29,99 zł/miesiąc</p>
+          <ul>
+            <li>Dostęp do podstawowych treści premium</li>
+            <li>Śledzenie popularnych tematów</li>
+          </ul>
+          <button class="btn-buy">Kup teraz</button>
+        </div>
+
+        <!-- Plan 2 -->
+        <div class="plan-card">
+          <h3>Premium Pro</h3>
+          <p class="price">59,99 zł/miesiąc</p>
+          <ul>
+            <li>Bez reklam</li>
+            <li>Dostęp do wszystkich treści premium</li>
+            <li>Śledzenie w czasie rzeczywistym</li>
+          </ul>
+          <button class="btn-buy">Kup teraz</button>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("dropdown-menu");
+
+      toggle.addEventListener("click", () => {
+        menu.classList.toggle("show");
+      });
+
+      // Dodatkowo: kliknięcie poza menu zamyka je
+      window.addEventListener("click", (e) => {
+        if (!toggle.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>
