@@ -1,149 +1,73 @@
+:where([class^="ri-"])::before { 
+    content: "\f3c2"; 
+}
 body {
-  margin: 0;
-  font-family: 'Inter', sans-serif;
-  background: #f2f4f8;
-  color: #000;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
 }
-
-header {
-  background: #111;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  position: relative;
+/* Background styles */
+.bg-space {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-
-.logo {
-  font-size: 1.4rem;
-  font-weight: 600;
+/* Sidebar navigation styles */
+.sidebar-link {
+    position: relative;
+    transition: all 0.3s ease;
 }
-
-.menu-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 0.5rem;
-  z-index: 1001;
+.sidebar-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #0078ff;
+    transition: width 0.3s ease;
 }
-
-.menu-toggle .bar {
-  width: 25px;
-  height: 3px;
-  background-color: white;
-  transition: all 0.3s ease;
-  border-radius: 2px;
+.sidebar-link:hover::after, 
+.sidebar-link.active::after {
+    width: 100%;
 }
-
-.menu-toggle.open .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+.sidebar-link:hover, 
+.sidebar-link.active {
+    color: #0078ff;
 }
-.menu-toggle.open .bar:nth-child(2) {
-  opacity: 0;
+/* Form element styles */
+input:focus, 
+textarea:focus {
+    outline: none;
+    border-color: #0078ff;
 }
-.menu-toggle.open .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+/* Custom form elements */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    background-color: #1f2937;
+    border: 2px solid #4b5563;
+    border-radius: 4px;
+    cursor: pointer;
+    position: relative;
 }
-
-.dropdown {
-  display: none;
-  position: absolute;
-  right: 2rem;
-  top: 70px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  padding: 1rem;
-  flex-direction: column;
-  gap: 1rem;
-  min-width: 150px;
-  z-index: 1000;
+input[type="checkbox"]:checked {
+    background-color: #0078ff;
+    border-color: #0078ff;
 }
-
-.dropdown a {
-  color: #333;
-  text-decoration: none;
-  padding: 0.5rem 0;
-  font-weight: 500;
+input[type="date"] {
+    color-scheme: dark;
 }
-
-.dropdown.active {
-  display: flex;
+input[type="number"] {
+    appearance: textfield;
 }
-
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
-
-  .dropdown {
-    display: flex !important;
-    position: static;
-    flex-direction: row;
-    background: none;
-    box-shadow: none;
-    gap: 2rem;
-    padding: 0;
-  }
-
-  .dropdown a {
-    color: white;
-  }
+/* Modal styles */
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
 }
-
-main {
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.greeting {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background-color: white;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.05);
-  width: 300px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.card h3 {
-  text-align: center;
-  margin-bottom: 0.5rem;
-}
-
-.card p {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.card img {
-  width: 100%;
-  height: 200px;
-  margin-top: 1rem;
-  border-radius: 10px;
-  object-fit: cover;
+.modal-content {
+    background-color: #1f2937;
+    border-radius: 0.5rem;
+    padding: 2rem;
 }
