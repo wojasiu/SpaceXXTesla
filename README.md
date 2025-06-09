@@ -50,3 +50,4 @@ python manage.py runserver
 Otwórz przeglądarkę internetową i wejdź na adres: http://127.0.0.1:8000/.
 Strona powinna się załadować i wszystkie funkcje powinny działać.
 Uwaga: Ponieważ baza danych jest nowa i pusta, aby się zalogować lub testować funkcje wymagające użytkownika, trzeba będzie najpierw stworzyć nowego użytkownika przez formularz rejestracji.
+Aby przejżeć baze danych należy pobrać https://sqlitebrowser.org/
