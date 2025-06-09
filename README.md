@@ -9,6 +9,8 @@ Rozpakuj otrzymany plik ZIP w dowolnej, łatwo dostępnej lokalizacji na swoim k
 
 Krok 3: Otwórz terminal w folderze projektu
 Wejdź do rozpakowanego folderu projektu (tego, w którym znajduje się plik manage.py) i otwórz w nim terminal (wiersz poleceń).
+Wpisz w PowerShellu (z uprawnieniami administratora):
+wsl --install -d Ubuntu
 
 Wskazówka dla Windows: W Eksploratorze Plików kliknij w pasek adresu, wpisz cmd i wciśnij Enter.
 Krok 4: Stwórz i aktywuj środowisko wirtualne
