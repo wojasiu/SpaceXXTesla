@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logowanie</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+    <style>
+        .form-errors {
+            color: #f85149; 
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        .form-error-field {
+            color: #f85149; 
+            font-size: 0.875rem;
+            margin-top: -0.75rem; 
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <section class="auth-box" id="auth-box">
+            <div class="tabs">
+                <button id="show-login" class="active">Logowanie</button>
+                <button id="show-register">Rejestracja</button>
+            </div>
+
+            <form action="{% url 'auth' %}" method="post" id="login-form" class="auth-form">
+                {% csrf_token %}
+                
+                <label for="{{ login_form.username.id_for_label }}">{{ login_form.username.label }}</label>
+                {{ login_form.username }}
+                
+                <label for="{{ login_form.password.id_for_label }}">{{ login_form.password.label }}</label>
+                {{ login_form.password }}
+                
+                {% if login_form.non_field_errors %}
+                    <div class="form-errors">
+                        <p>Login lub hasło jest nieprawidłowe. Spróbuj ponownie.</p>
+                    </div>
+                {% endif %}
+                
+                <button type="submit" name="login_submit">Zaloguj</button>
+            </form>
+
+            <form action="{% url 'auth' %}" method="post" id="register-form" class="auth-form hidden">
+                {% csrf_token %}
+
+                <label for="{{ register_form.username.id_for_label }}">{{ register_form.username.label }}</label>
+                {{ register_form.username }}
+                {% for error in register_form.username.errors %}<p class="form-error-field">{{ error }}</p>{% endfor %}
+
+                <label for="{{ register_form.email.id_for_label }}">Email</label>
+                {{ register_form.email }}
+                {% for error in register_form.email.errors %}<p class="form-error-field">{{ error }}</p>{% endfor %}
+
+                <label for="{{ register_form.password1.id_for_label }}">{{ register_form.password1.label }}</label>
+                {{ register_form.password1 }}
+                {% for error in register_form.password1.errors %}<p class="form-error-field">{{ error }}</p>{% endfor %}
+                
+                <label for="{{ register_form.password2.id_for_label }}">{{ register_form.password2.label }}</label>
+                {{ register_form.password2 }}
+                {% for error in register_form.password2.errors %}<p class="form-error-field">{{ error }}</p>{% endfor %}
+                
+                {% if register_form.non_field_errors %}
+                <div class="form-errors">
+                    {% for error in register_form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <button type="submit" name="register_submit">Zarejestruj się</button>
+            </form>
+            
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const showLoginBtn = document.getElementById("show-login");
+            const showRegisterBtn = document.getElementById("show-register");
+            const loginForm = document.getElementById("login-form");
+            const registerForm = document.getElementById("register-form");
+
+            showLoginBtn.addEventListener("click", () => {
+                loginForm.classList.remove("hidden");
+                registerForm.classList.add("hidden");
+                showLoginBtn.classList.add("active");
+                showRegisterBtn.classList.remove("active");
+            });
+
+            showRegisterBtn.addEventListener("click", () => {
+                loginForm.classList.add("hidden");
+                registerForm.classList.remove("hidden");
+                showLoginBtn.classList.remove("active");
+                showRegisterBtn.classList.add("active");
+            });
+
+            // Sprawdzanie, czy są błędy formularza rejestracji, aby pokazać właściwą zakładkę
+            const hasRegistrationErrors = document.querySelector('#register-form .form-error-field') !== null || document.querySelector('#register-form .form-errors') !== null;
+            if (window.location.hash === '#register' || hasRegistrationErrors) {
+                showRegisterBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>
